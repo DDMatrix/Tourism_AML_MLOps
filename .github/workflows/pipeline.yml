@@ -9,6 +9,7 @@ jobs:
 
   register-dataset:
     runs-on: ubuntu-latest
+    environment: MLOps
     steps:
       - uses: actions/checkout@v3
       - name: Install Dependencies
@@ -21,6 +22,7 @@ jobs:
   data-prep:
     needs: register-dataset
     runs-on: ubuntu-latest
+    environment: MLOps
     steps:
       - uses: actions/checkout@v3
       - name: Install Dependencies
@@ -34,6 +36,7 @@ jobs:
   model-traning:
     needs: data-prep
     runs-on: ubuntu-latest
+    environment: MLOps
     steps:
       - uses: actions/checkout@v3
       - name: Install Dependencies
@@ -49,6 +52,7 @@ jobs:
 
   deploy-hosting:
     runs-on: ubuntu-latest
+    environment: MLOps
     needs: [model-traning,data-prep,register-dataset]
     steps:
       - uses: actions/checkout@v3
